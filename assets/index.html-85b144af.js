@@ -1,0 +1,1 @@
+import{_ as t,p as c,q as n,R as e,t as o}from"./framework-96b046e1.js";const s={},_=e("p",null,[e("code",null,"C"),o("语言是一门十分强大的编程语言，速度快小巧易学。")],-1),a=[_];function l(r,d){return c(),n("div",null,a)}const f=t(s,[["render",l],["__file","index.html.vue"]]);export{f as default};

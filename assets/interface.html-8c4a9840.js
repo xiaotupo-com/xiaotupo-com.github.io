@@ -1,0 +1,1 @@
+const a=JSON.parse('{"key":"v-c692e198","path":"/java/interface.html","title":"Java 接口","lang":"zh-Hans","frontmatter":{"title":"Java 接口"},"headers":[{"level":2,"title":"接口静态字段","slug":"接口静态字段","link":"#接口静态字段","children":[]}],"git":{},"filePathRelative":"java/interface.md"}');export{a as data};

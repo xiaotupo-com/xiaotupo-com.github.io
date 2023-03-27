@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-4917553d","path":"/e/motor/","title":"电机与电机控制","lang":"zh-Hans","frontmatter":{"title":"电机与电机控制"},"headers":[],"git":{},"filePathRelative":"e/motor/README.md"}');export{t as data};

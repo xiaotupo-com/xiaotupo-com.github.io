@@ -1,0 +1,1 @@
+import{_ as l,p as n,q as t,R as e}from"./framework-96b046e1.js";const o={},_=e("p",null,"电机分类：",-1),s=e("ol",null,[e("li",null,"直流电机"),e("li",null,"交流电机")],-1),c=[_,s];function i(r,a){return n(),t("div",null,c)}const u=l(o,[["render",i],["__file","index.html.vue"]]);export{u as default};

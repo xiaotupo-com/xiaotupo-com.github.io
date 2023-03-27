@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-74e511fd","path":"/e/freertos/config.html","title":"配置","lang":"zh-Hans","frontmatter":{"title":"配置"},"headers":[],"git":{},"filePathRelative":"e/freertos/config.md"}');export{e as data};

@@ -1,0 +1,1 @@
+const a=JSON.parse('{"key":"v-a85f2a22","path":"/cplusplus/guide/class-base.html","title":"C++ 类笔记","lang":"zh-Hans","frontmatter":{"title":"C++ 类笔记"},"headers":[],"git":{},"filePathRelative":"cplusplus/guide/class-base.md"}');export{a as data};

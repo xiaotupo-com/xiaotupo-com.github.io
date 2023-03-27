@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-4e16f680","path":"/e/module/","title":"电子模块","lang":"zh-Hans","frontmatter":{"title":"电子模块"},"headers":[],"git":{},"filePathRelative":"e/module/README.md"}');export{e as data};

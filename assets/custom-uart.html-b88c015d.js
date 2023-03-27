@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-4d16f642","path":"/e/gd32/custom-uart.html","title":"自定义串口协议","lang":"zh-Hans","frontmatter":{"title":"自定义串口协议"},"headers":[],"git":{},"filePathRelative":"e/gd32/custom-uart.md"}');export{t as data};

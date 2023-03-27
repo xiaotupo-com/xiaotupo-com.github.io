@@ -1,0 +1,1 @@
+import{_ as e,p as t,q as n,R as _}from"./framework-96b046e1.js";const c={},o=_("p",null,"这里是电子模块板块，在这里会介绍一些常用的电子模块，如显示屏、传感器模块、输入输出模块等。",-1),s=[o];function r(a,l){return t(),n("div",null,s)}const i=e(c,[["render",r],["__file","index.html.vue"]]);export{i as default};

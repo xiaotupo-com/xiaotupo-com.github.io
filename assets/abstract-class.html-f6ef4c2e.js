@@ -1,0 +1,1 @@
+const a=JSON.parse('{"key":"v-6495ad78","path":"/java/abstract-class.html","title":"Java 抽象类","lang":"zh-Hans","frontmatter":{"title":"Java 抽象类"},"headers":[],"git":{},"filePathRelative":"java/abstract-class.md"}');export{a as data};

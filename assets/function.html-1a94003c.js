@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-e3828908","path":"/rust/guide/function.html","title":"Rust 中的函数","lang":"zh-Hans","frontmatter":{"title":"Rust 中的函数"},"headers":[{"level":2,"title":"参数","slug":"参数","link":"#参数","children":[]},{"level":2,"title":"返回值","slug":"返回值","link":"#返回值","children":[]}],"git":{},"filePathRelative":"rust/guide/function.md"}');export{t as data};

@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-5753c65e","path":"/cplusplus/guide/datatype.html","title":"数据类型","lang":"zh-Hans","frontmatter":{"title":"数据类型"},"headers":[{"level":2,"title":"各种数据类型的大小","slug":"各种数据类型的大小","link":"#各种数据类型的大小","children":[]}],"git":{},"filePathRelative":"cplusplus/guide/datatype.md"}');export{t as data};

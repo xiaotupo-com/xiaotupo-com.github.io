@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-800b2d60","path":"/e/freertos/delay.html","title":"FreeRTOS 延时函数","lang":"zh-Hans","frontmatter":{"title":"FreeRTOS 延时函数"},"headers":[{"level":2,"title":"vTaskDelayUntil() 使用方法","slug":"vtaskdelayuntil-使用方法","link":"#vtaskdelayuntil-使用方法","children":[]}],"git":{},"filePathRelative":"e/freertos/delay.md"}');export{e as data};

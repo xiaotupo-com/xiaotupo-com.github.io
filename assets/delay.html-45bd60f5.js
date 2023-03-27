@@ -1,0 +1,12 @@
+import{_ as n,p as s,q as a,a1 as t}from"./framework-96b046e1.js";const e={},p=t(`<p><strong>FreeRTOS</strong> 提供了两个延时类函数，相对延时（<code>vTaskDelay()</code>）和绝对延时（<code>vTaskDelayUntil()</code>）。</p><h2 id="vtaskdelayuntil-使用方法" tabindex="-1"><a class="header-anchor" href="#vtaskdelayuntil-使用方法" aria-hidden="true">#</a> vTaskDelayUntil() 使用方法</h2><div class="language-c line-numbers-mode" data-ext="c"><pre class="language-c"><code><span class="token keyword">void</span> <span class="token function">blue_led_task</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span>pvParameters<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	TickType_t dtick <span class="token operator">=</span> <span class="token function">xTaskGetTickCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">while</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		BLUELED_TOGGLE<span class="token punctuation">;</span>
+		<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;blue: %d\\n&quot;</span><span class="token punctuation">,</span> dtick<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+		
+		<span class="token function">vTaskDelayUntil</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>dtick<span class="token punctuation">,</span> <span class="token function">pdMS_TO_TICKS</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>`,3),c=[p];function o(i,l){return s(),a("div",null,c)}const d=n(e,[["render",o],["__file","delay.html.vue"]]);export{d as default};

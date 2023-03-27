@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-0d360958","path":"/e/circuit/audion.html","title":"三极管常用电路分享","lang":"zh-Hans","frontmatter":{"title":"三极管常用电路分享"},"headers":[{"level":2,"title":"蜂鸣器驱动","slug":"蜂鸣器驱动","link":"#蜂鸣器驱动","children":[{"level":3,"title":"有源蜂鸣器电路","slug":"有源蜂鸣器电路","link":"#有源蜂鸣器电路","children":[]}]}],"git":{},"filePathRelative":"e/circuit/audion.md"}');export{e as data};

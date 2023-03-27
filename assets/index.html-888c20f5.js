@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-9cc03ecc","path":"/e/freertos/","title":"介绍","lang":"zh-Hans","frontmatter":{"title":"介绍"},"headers":[{"level":2,"title":"为什么要学习 RTOS","slug":"为什么要学习-rtos","link":"#为什么要学习-rtos","children":[]},{"level":2,"title":"书籍与资料推荐","slug":"书籍与资料推荐","link":"#书籍与资料推荐","children":[]}],"git":{},"filePathRelative":"e/freertos/README.md"}');export{e as data};

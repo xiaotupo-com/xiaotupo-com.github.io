@@ -1,0 +1,1 @@
+const a=JSON.parse('{"key":"v-ba0632e6","path":"/clanguage/","title":"C 语言介绍","lang":"zh-Hans","frontmatter":{"title":"C 语言介绍"},"headers":[],"git":{},"filePathRelative":"clanguage/README.md"}');export{a as data};

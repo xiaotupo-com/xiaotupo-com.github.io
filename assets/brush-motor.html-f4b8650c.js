@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-110b9d98","path":"/e/motor/brush-motor.html","title":"直流有刷电机","lang":"zh-Hans","frontmatter":{"title":"直流有刷电机"},"headers":[{"level":2,"title":"电机选型","slug":"电机选型","link":"#电机选型","children":[]},{"level":2,"title":"测速方法","slug":"测速方法","link":"#测速方法","children":[]}],"git":{},"filePathRelative":"e/motor/brush-motor.md"}');export{t as data};
