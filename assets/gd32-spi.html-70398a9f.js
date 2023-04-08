@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-0eb0ea24","path":"/e/gd32/gd32-spi.html","title":"SPI 接口","lang":"zh-Hans","frontmatter":{"title":"SPI 接口"},"headers":[],"git":{},"filePathRelative":"e/gd32/gd32-spi.md"}');export{e as data};

@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-a02ba86c","path":"/e/circuit/ComponentPackaging.html","title":"电子元器件封装","lang":"zh-Hans","frontmatter":{"title":"电子元器件封装"},"headers":[{"level":2,"title":"芯片封装","slug":"芯片封装","link":"#芯片封装","children":[]}],"git":{},"filePathRelative":"e/circuit/ComponentPackaging.md"}');export{t as data};

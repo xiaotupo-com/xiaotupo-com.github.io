@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-2fd4a6f2","path":"/e/switch_power/","title":"基础","lang":"zh-Hans","frontmatter":{"title":"基础"},"headers":[{"level":2,"title":"整流前的保护电路","slug":"整流前的保护电路","link":"#整流前的保护电路","children":[]}],"git":{},"filePathRelative":"e/switch_power/README.md"}');export{e as data};

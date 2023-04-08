@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-ba0632e6","path":"/clanguage/","title":"C 语言介绍","lang":"zh-Hans","frontmatter":{"title":"C 语言介绍"},"headers":[{"level":2,"title":"大小端存储模式","slug":"大小端存储模式","link":"#大小端存储模式","children":[]},{"level":2,"title":"输入型参数和输出型参数","slug":"输入型参数和输出型参数","link":"#输入型参数和输出型参数","children":[]}],"git":{},"filePathRelative":"clanguage/README.md"}');export{e as data};
