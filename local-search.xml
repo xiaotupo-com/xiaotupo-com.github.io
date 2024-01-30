@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>FreeRTOS LED闪烁例子</title>
+    <link href="/2024/01/30/freertos-blink-demo/"/>
+    <url>/2024/01/30/freertos-blink-demo/</url>
+    
+    <content type="html"><![CDATA[<p>这个例子演示了基于 FreeRTOS 的闪灯程序，这里给出主要代码块。</p><h2 id="main-c"><a href="#main-c" class="headerlink" title="main.c"></a>main.c</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">vApplicationTickHook</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span></span><br><span class="hljs-function"></span>&#123;<br>  global_num_1++;<br>  <span class="hljs-keyword">if</span> (global_num_1 &gt;= <span class="hljs-number">500</span>)<br>  &#123;<br>    global_num_1 = <span class="hljs-number">0</span>;<br>    <span class="hljs-comment">// 给 led_task 任务发送通知</span><br>    <span class="hljs-built_in">xTaskNotifyGive</span>(<span class="hljs-built_in">xTaskGetHandle</span>(<span class="hljs-string">&quot;led_task&quot;</span>));<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure><h2 id="led-c"><a href="#led-c" class="headerlink" title="led.c"></a>led.c</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">/// @brief led FreeRTOS 任务函数</span><br><span class="hljs-comment">/// @param pvParameters</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">led_task</span><span class="hljs-params">(<span class="hljs-type">void</span> *pvParameters)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">uint32_t</span> ul_notify_value;<br>    <span class="hljs-keyword">while</span> (<span class="hljs-number">1</span>) &#123;<br>        ul_notify_value = <span class="hljs-built_in">ulTaskNotifyTake</span>(pdTRUE, <span class="hljs-number">0</span>);<br>        <span class="hljs-keyword">if</span> (ul_notify_value &gt; <span class="hljs-number">0</span>) &#123;<br>            sys_led.<span class="hljs-built_in">toggle</span>();<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>嵌入式</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>FreeRTOS</tag>
+      
+      <tag>AT32</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>我的Vim配置文件</title>
     <link href="/2024/01/13/my-vim-config/"/>
     <url>/2024/01/13/my-vim-config/</url>
