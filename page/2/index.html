@@ -18,7 +18,7 @@
   
     <meta property="og:type" content="website">
 <meta property="og:title" content="小土坡">
-<meta property="og:url" content="https://xiaotupo.com/index.html">
+<meta property="og:url" content="https://xiaotupo.com/page/2/index.html">
 <meta property="og:site_name" content="小土坡">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="zsf">
@@ -232,15 +232,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/02/28/wpf-style/" target="_blank">
-          WPF 样式小记
+        <a href="/2024/02/05/dyn-array-for-c-language/" target="_blank">
+          C语言动态数组的实现
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/28/wpf-style/" target="_blank">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/05/dyn-array-for-c-language/" target="_blank">
         <div>
-          WPF 中的 Style 和 html 中的 css 是类似的东西，都是定义UI样式，WPF 中的样式可以继承，下面就来了解下 WPF 中的样式使用方法。 定义一个简单的样式这里我们给所有的 Button 定义一个样式，类似与 CSS 中的元素选择器，这里我们选择的元素就是 WPF 中的 Button。 12345678910111213141516171819202122&lt;Window
+          12345678910struct Dyn_arry_t&#123;	int* array;	int capacity;	int size;&#125;;void dyn_array_test(void);struct Dyn_arry_t dyn_array_init(int* array, int size);  1234567891011121314151617181920212223242
         </div>
       </a>
 
@@ -248,42 +248,12 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-02-28 21:18" pubdate>
-              2024-02-28
+            <time datetime="2024-02-05 18:57" pubdate>
+              2024-02-05
             </time>
           </div>
         
         
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%BC%96%E7%A8%8B/" class="category-chain-item">编程</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/WPF/">#WPF</a>
-            
-              <a href="/tags/Style/">#Style</a>
-            
-          </div>
         
       </div>
     </article>
@@ -295,15 +265,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/02/27/wpf-message-box/" target="_blank">
-          WPF 消息框例子
+        <a href="/2024/02/05/c-language-print-array/" target="_blank">
+          C语言中打印整型数组的函数实现
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/27/wpf-message-box/" target="_blank">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/05/c-language-print-array/" target="_blank">
         <div>
-          这篇文章记录了 WPF 中的 MessageBox 的使用，给出了详细的代码例子。 消息框1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071namespace Dialogs&#123
+          在这里分享出自己写的，用于打印整型数组的C函数，把函数写到了 utils 文件中，以后可以往里边写一下其他的工具函数。 utils.h12345678910#ifndef _UTILS_H#define _UTILS_H#include &lt;stdio.h&gt;#define Line(message) printf(&quot;-------------------- %s -------
         </div>
       </a>
 
@@ -311,499 +281,7 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-02-27 12:41" pubdate>
-              2024-02-27
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%BC%96%E7%A8%8B/" class="category-chain-item">编程</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/WPF/">#WPF</a>
-            
-              <a href="/tags/C/">#C#</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/02/23/freertos-delay/" target="_blank">
-          FreeRTOS 延时函数
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/23/freertos-delay/" target="_blank">
-        <div>
-          vTaskDelay()任务延时函数，把当前任务从运行态（就绪列表），移到延时列表。 参数： xTicksToDelay &gt; 延时的时间长度，单位是系统时钟节拍周期。 如果调用vTaskDelay()函数的任务在执行过程中被更高优先级的任务或者中断所打断，那么调用vTaskDelay()函数的任务将会受到影响，此时将不能保持一个固定的时间间隔运行。 使用例子12vTaskDelay(500/
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-02-23 18:33" pubdate>
-              2024-02-23
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/" class="category-chain-item">嵌入式</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/FreeRTOS/">#FreeRTOS</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/02/22/freertos-task-suspend-resume/" target="_blank">
-          FreeRTOS 任务挂起与任务恢复
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/22/freertos-task-suspend-resume/" target="_blank">
-        <div>
-          FreeRTOS 的任务有几种状态，并且这几种状态可以相互转换，下面是转换图：  任务的4个状态：  运行态 就绪态，指准备好了，可以随时运行 阻塞态 挂起态  运行态当任务实际执行时，它被称为处于运行状态。 任务当前正在使用处理器。 如果运行 RTOS 的处理器只有一个内核， 那么在任何给定时间内都只能有一个任务处于运行状态。 就绪态准备就绪任务指那些能够执行（它们不处于阻塞或挂起状态）， 但目
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-02-22 22:55" pubdate>
-              2024-02-22
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/" class="category-chain-item">嵌入式</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/FreeRTOS/">#FreeRTOS</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/02/22/freertos-create_task/" target="_blank">
-          FreeRTOS 创建任务
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/22/freertos-create_task/" target="_blank">
-        <div>
-          1234567891011121314151617#include &quot;FreeRTOS.h&quot;#include &quot;task.h&quot;#define USER_LED_TASK_PRIO       2   /* 定义任务优先级，数字越大优先级越高 */#define USER_LED_TASK_STACK_SIZE 120 /* 定义任务堆栈大小，单位为：字 */
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-02-22 22:34" pubdate>
-              2024-02-22
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/" class="category-chain-item">嵌入式</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/FreeRTOS/">#FreeRTOS</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/02/22/rust-error-manage/" target="_blank">
-          Rust 笔记之错误处理
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/22/rust-error-manage/" target="_blank">
-        <div>
-          12345678910111213141516171819202122fn result_test(i: i32) -&gt; Result&lt;&amp;&#x27;static str, &amp;&#x27;static str&gt; &#123;    if i &gt; 0 &#123;        Err(&quot;Error&quot;)    &#125; else &#1
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-02-22 12:41" pubdate>
-              2024-02-22
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%BC%96%E7%A8%8B/" class="category-chain-item">编程</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Rust/">#Rust</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/02/21/rust-const-variable/" target="_blank">
-          Rust 笔记之常量与变量
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/21/rust-const-variable/" target="_blank">
-        <div>
-          Rust 中变量和常量的概念，变量分为可变变量和不可变变量，常量用 const 定义。 1234567891011121314151617181920212223fn main() &#123;    println!(&quot;/////////////////////////////////////////&quot;);    println!(&quot;==============He
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-02-21 19:52" pubdate>
-              2024-02-21
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%BC%96%E7%A8%8B/" class="category-chain-item">编程</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Rust/">#Rust</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/02/21/rust-stdio-file-demo/" target="_blank">
-          Rust 简单输入输出以及读取文件 - 例子代码
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/21/rust-stdio-file-demo/" target="_blank">
-        <div>
-          在这里分享一个我写的 Rust 例子，用到了输入输出和文件读取。 123456789101112131415161718192021222324252627/// # 学习 Rust 中的标准输入/// 首先我们要导入 stdin/// `use std::io::stdin`use std::io::&#123;self, stdin&#125;;use std::io::prelude::*;
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-02-21 19:44" pubdate>
-              2024-02-21
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%BC%96%E7%A8%8B/" class="category-chain-item">编程</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Rust/">#Rust</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/02/13/c-language-string-manage/" target="_blank">
-          C语言字符串处理相关笔记
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/13/c-language-string-manage/" target="_blank">
-        <div>
-          gets()函数原型： 1char * gets (char *__str);  功能：从标准输入读入字符，并保存到__str指定的内存空间，直到出现换行符或读到文件结尾为止。 参数：s 字符串首地址。返回值：    成功：读入的字符串。    失败：NULL 例子： 1234567void string_test(void)&#123;    char s[100];    if (gets(s
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-02-13 13:44" pubdate>
-              2024-02-13
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%BC%96%E7%A8%8B/" class="category-chain-item">编程</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/C%E8%AF%AD%E8%A8%80/">#C语言</a>
-            
-              <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">#字符串</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/02/05/c-language-macro-details/" target="_blank">
-          C语言宏笔记详情
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/05/c-language-macro-details/" target="_blank">
-        <div>
-          宏是C语言中的基石，写 c 程序就必定会用的宏，所有学习宏也是必不可少的。 宏的分类（使用方式）：  简单的宏定义（只有宏名）：#define DEBUG 简单替换：#define PI 3.1415926 带参数的宏： #define ADD(x,y) ((x) + (y)) 	&#x2F;&#x2F; 加法运算 #define SQRT(x)  ((x) * (x)) 	&#x2F;&#x2F
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-02-05 20:00" pubdate>
+            <time datetime="2024-02-05 17:42" pubdate>
               2024-02-05
             </time>
           </div>
@@ -836,7 +314,358 @@
             
               <a href="/tags/C%E8%AF%AD%E8%A8%80/">#C语言</a>
             
-              <a href="/tags/%E5%AE%8F/">#宏</a>
+              <a href="/tags/%E6%95%B0%E7%BB%84/">#数组</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/02/04/ltspice-txt-to-cn/" target="_blank">
+          LTspice 界面相关翻译
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/04/ltspice-txt-to-cn/" target="_blank">
+        <div>
+          LTspice 菜单ui翻译。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-02-04 22:21" pubdate>
+              2024-02-04
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1/" class="category-chain-item">电路设计</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/LTspice/">#LTspice</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/30/freertos-blink-demo/" target="_blank">
+          FreeRTOS LED闪烁例子
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/30/freertos-blink-demo/" target="_blank">
+        <div>
+          这个例子演示了基于 FreeRTOS 的闪灯程序，这里给出主要代码块。 main.c12345678910void vApplicationTickHook(void)&#123;  global_num_1++;  if (global_num_1 &gt;= 500)  &#123;    global_num_1 = 0;    // 给 led_task 任务发送通知    xTaskNo
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-30 22:06" pubdate>
+              2024-01-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/" class="category-chain-item">嵌入式</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/FreeRTOS/">#FreeRTOS</a>
+            
+              <a href="/tags/AT32/">#AT32</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/13/my-vim-config/" target="_blank">
+          我的Vim配置文件
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/13/my-vim-config/" target="_blank">
+        <div>
+          我的配置文件如下： 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969798991
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-13 12:22" pubdate>
+              2024-01-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BC%96%E7%A8%8B/" class="category-chain-item">编程</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Vim/">#Vim</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/12/cmake-note/" target="_blank">
+          CMake 笔记
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/12/cmake-note/" target="_blank">
+        <div>
+          
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-12 23:54" pubdate>
+              2024-01-12
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BC%96%E7%A8%8B/" class="category-chain-item">编程</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/CMake/">#CMake</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/12/C++%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/" target="_blank">
+          C++ 中的构造函数
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/12/C++%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/" target="_blank">
+        <div>
+          构造函数C++ 构造函数就是创建类对象时自动执行的函数，编译器会默认提供3给默认构造函数，一个构造函数，一个拷贝构造函数，一个移动构造函数。 例子： 1234class A&#123;&#125;;  类 A 的3给默认构造函数为： 123A(); // 构造函数A(const A&amp;); // 拷贝构造函数A(A&amp;&amp;) // 移动构造函数  构造函数初始化列表构造函数初始化
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-12 20:39" pubdate>
+              2024-01-12
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BC%96%E7%A8%8B/" class="category-chain-item">编程</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/C/">#C++</a>
+            
+              <a href="/tags/%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/">#构造函数</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/12/hello-world/" target="_blank">
+          Hello World
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/12/hello-world/" target="_blank">
+        <div>
+          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-12 19:18" pubdate>
+              2024-01-12
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Hexo/">#Hexo</a>
+            
+              <a href="/tags/Blog/">#Blog</a>
             
           </div>
         
@@ -848,7 +677,7 @@
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
     </span>
   </nav>
 
