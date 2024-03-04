@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>KiCAD 官方库笔记</title>
+    <link href="/2024/03/04/kicad-lib-note/"/>
+    <url>/2024/03/04/kicad-lib-note/</url>
+    
+    <content type="html"><![CDATA[<ul><li>Symbol 一些标志丝印，如：<code>CE/ESD/FCC/KiCad/OSHW</code> 等<code>Logo</code>。</li><li>TerminalBlock_Altech P5.0mm 45度端子<ul><li><img src="/img/post_img/altech_AK300_1.png" alt="altech_AK300_1"></li></ul></li><li>TerminalBlock_Phoenix 5.08 绿色端子<ul><li><img src="/img/post_img/TerminalBlock_Phoenix.png" alt="TerminalBlock_Phoenix"></li></ul></li><li>TestPoint 测试点<ul><li><img src="/img/post_img/test_point.png" alt="test_point"></li></ul></li><li>Valve 电子管</li><li>Varistor 压敏电阻插件<ul><li><img src="/img/post_img/Varistor.png" alt="Varistor"></li></ul></li><li>Sensor 传感器</li><li>Rotary_Encoder 旋转编码器，EC11等</li><li>FR_Shielding 屏蔽罩</li><li>FR_Module 常见射频模块，如：ESP32模块等</li><li>Resistor_THT 插件电阻</li><li>Resistor_SMD 贴片电阻</li><li>Relay_THT 插件继电器</li><li>Relay_SMD 贴片继电器</li><li>Potentiometer_THT 插件电位器</li><li>Potentiometer_SMD 贴片电位器</li><li>Package_TO_SOT_THT TO和SOT系列封装插件版，TO-220等</li><li>Package_TO_SOT_SMD TO和SOT系列封装贴片版，SOT-223-5等</li><li>Package_SO SO封装</li><li>Package_SON SON封装</li><li>Package_SIP SIP 封装</li><li>Package_QFP LQFP\EQFP 封装</li><li>Package_LGA LGA 封装</li><li>Package_LCC LCC 封装</li><li>Package_DIP DIP 封装</li><li>Package_DFN_QFN QFN 封装</li><li>Package_CSP CSP封装</li><li>Package_BGA BGA 封装</li><li>Oscillator 振荡器晶振</li><li>OptoDevice 光电子器件，光纤口等</li><li>NetTie 上下连接好的焊盘</li><li>Mounting_Wuerth 安装柱</li><li>MountingHole 安装孔</li><li>LED_THT 插件LED</li><li>LED_SMD 贴片LED</li><li>Jumper 跳线</li><li>Inductor_THT和Inductor_THT_Wurth 插件电感</li><li>Inductor_SMD和Inductor_SMD_Wurth 贴片电感</li><li>Heatsink 散热片</li><li>Fuse 保险丝座</li><li>Filter 滤波器</li><li>Fiducial 基准点，贴片时对焦用</li><li>Display_7Segment 数码管</li><li>Display 液晶屏</li><li>Diode_THT 插件二极管整流桥</li><li>Diode_SMD 贴片二极管整流桥</li><li>Crystal 晶振</li><li>Connector_Wire 焊锡线的焊盘，带固定孔</li><li>Connector_USB USB座</li><li>Connector_PinSocket_xxxx 排母</li><li>Connector_PinHeader_xxxx 排针</li><li>Connector_Phoenix_MSTB 5.08mm 绿色端子座</li><li>Connector_Molex MX1.25mm,MX2.0mm,MX1.5mm,MX2.54mm,MX3.96mm 等规格端子</li><li>Connector_JST JST和XH端子 XH2.54等<ul><li><img src="/img/post_img/JST.png" alt="JST"></li><li><img src="/img/post_img/xh254.png" alt="XH"></li></ul></li><li>Connector_IDC 牛角座</li><li>Connector_FFC-FPC FPC座</li><li>Connector_Coaxial 同轴光缆座，SMA\BNC等</li><li>Connector_Card 各种卡座，SD卡等</li><li>Connector_BarrelJack 各种电源座</li><li>Connector_Audio 各种音频接口</li><li>Connector_AMASS 电池座 XT60等</li><li>Capacitor_THT 插件电容</li><li>Capacitor_SMD 贴片电容</li><li>Capacitor_Tantalum_SMD 钽电容</li><li>Buzzer 蜂鸣器</li><li>Button_Switch_THT 插件按键开关</li><li>Button_Switch_SMD 贴片按键开关</li><li>Battery 电池座等</li><li></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>电路设计</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>KiCad</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>WPF 样式小记</title>
     <link href="/2024/02/28/wpf-style/"/>
     <url>/2024/02/28/wpf-style/</url>
