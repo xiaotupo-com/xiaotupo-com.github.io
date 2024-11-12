@@ -34,6 +34,22 @@
       </tags>
   </entry>
   <entry>
+    <title>C语言中打印整型数组的函数实现</title>
+    <url>//article/c-language-print-array/</url>
+    <content><![CDATA[<p>在这里分享出自己写的，用于打印整型数组的<code>C</code>函数，把函数写到了 <code>utils</code> 文件中，以后可以往里边写一下其他的工具函数。</p>
+<h2 id="utils-h"><a href="#utils-h" class="headerlink" title="utils.h"></a>utils.h</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifndef</span> _UTILS_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> _UTILS_H</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> Line(message) printf(<span class="string">&quot;-------------------- %s --------------------\n&quot;</span>, message)</span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">print_array_int</span><span class="params">(<span class="type">int</span>* arr, <span class="type">int</span> size)</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span> <span class="comment">/* _UTILS_H */</span></span></span><br></pre></td></tr></table></figure>
+
+<h2 id="utils-c"><a href="#utils-c" class="headerlink" title="utils.c"></a>utils.c</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;utils.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">print_array_int</span><span class="params">(<span class="type">int</span>* arr, <span class="type">int</span> size)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; size; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (i == (size - <span class="number">1</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 打印最后一个元素，并换行</span></span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, *(arr++));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 打印非最后一个元素，不换行</span></span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%d, &quot;</span>, *(arr++));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>编程</category>
+      </categories>
+      <tags>
+        <tag>C语言</tag>
+        <tag>数组</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>C语言宏笔记详情</title>
     <url>//article/c-language-macro-details/</url>
     <content><![CDATA[<p>宏是<code>C</code>语言中的基石，写 <code>c</code> 程序就必定会用的宏，所有学习<strong>宏</strong>也是必不可少的。</p>
@@ -91,22 +107,6 @@
       <tags>
         <tag>C语言</tag>
         <tag>宏</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>C语言中打印整型数组的函数实现</title>
-    <url>//article/c-language-print-array/</url>
-    <content><![CDATA[<p>在这里分享出自己写的，用于打印整型数组的<code>C</code>函数，把函数写到了 <code>utils</code> 文件中，以后可以往里边写一下其他的工具函数。</p>
-<h2 id="utils-h"><a href="#utils-h" class="headerlink" title="utils.h"></a>utils.h</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifndef</span> _UTILS_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> _UTILS_H</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> Line(message) printf(<span class="string">&quot;-------------------- %s --------------------\n&quot;</span>, message)</span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">print_array_int</span><span class="params">(<span class="type">int</span>* arr, <span class="type">int</span> size)</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span> <span class="comment">/* _UTILS_H */</span></span></span><br></pre></td></tr></table></figure>
-
-<h2 id="utils-c"><a href="#utils-c" class="headerlink" title="utils.c"></a>utils.c</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;utils.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">print_array_int</span><span class="params">(<span class="type">int</span>* arr, <span class="type">int</span> size)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; size; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (i == (size - <span class="number">1</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 打印最后一个元素，并换行</span></span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, *(arr++));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 打印非最后一个元素，不换行</span></span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%d, &quot;</span>, *(arr++));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>编程</category>
-      </categories>
-      <tags>
-        <tag>C语言</tag>
-        <tag>数组</tag>
       </tags>
   </entry>
   <entry>
@@ -370,6 +370,22 @@
       </tags>
   </entry>
   <entry>
+    <title>FreeRTOS钩子函数</title>
+    <url>//article/freertos-hook-function/</url>
+    <content><![CDATA[<p>FreeRTOS 中的钩子函数和中断的回调函数很像，钩子函数的名字是固定的，在特定事件下会自动执行响应名字的钩子函数，并且钩子函数是可剪裁的，在 FreeRTOSConfig.h中配置是否启用特定的钩子函数。</p>
+<h2 id="vApplicationTickHook"><a href="#vApplicationTickHook" class="headerlink" title="vApplicationTickHook"></a>vApplicationTickHook</h2><p>节拍中断可以选择是否回调一个钩子函数，这个钩子函数允许实现一些周期性的功能。</p>
+<p>使用节拍中断钩子函数，需要将 <code>configUSE_TICK_HOOK</code>设置为1，同时钩子函数申明为如下原型：</p>
+<p><code>void vApplicationTickHook( void )</code></p>
+<p>这个钩子函数必须很短且占用堆栈空间很少，因为这是在中断中调用的函数，同时，只能调用以<strong>FromISR</strong>结尾的<strong>API</strong>函数。</p>
+]]></content>
+      <categories>
+        <category>嵌入式</category>
+      </categories>
+      <tags>
+        <tag>FreeRTOS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>FreeRTOS 延时函数</title>
     <url>//article/freertos-delay/</url>
     <content><![CDATA[<h2 id="vTaskDelay"><a href="#vTaskDelay" class="headerlink" title="vTaskDelay()"></a>vTaskDelay()</h2><p>任务延时函数，把当前任务从运行态（就绪列表），移到延时列表。</p>
@@ -385,22 +401,6 @@
 <h3 id="参数-pxPreviousWakeTime"><a href="#参数-pxPreviousWakeTime" class="headerlink" title="参数 pxPreviousWakeTime"></a>参数 pxPreviousWakeTime</h3><p><code>pxPreviousWakeTime</code>：指针，指向一个变量，该变量保存任务最后一次解除阻塞的时间。第一次使用前，该变量必须初始化为当前时间。之后这个变量会在<code>vTaskDelayUntil()</code>函数内自动更新。</p>
 <p>例子：</p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">test_task</span><span class="params">(<span class="type">void</span> *pvParameters)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="type">static</span> portTickType xLastWakeTime;</span><br><span class="line"></span><br><span class="line">    xLastWakeTime = xTaskGetTickCount();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;test_task()&quot;</span>);</span><br><span class="line">        sys_led.toggle();</span><br><span class="line">        vTaskDelayUntil(&amp;xLastWakeTime, <span class="number">100</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    vTaskDelete(<span class="literal">NULL</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>嵌入式</category>
-      </categories>
-      <tags>
-        <tag>FreeRTOS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>FreeRTOS钩子函数</title>
-    <url>//article/freertos-hook-function/</url>
-    <content><![CDATA[<p>FreeRTOS 中的钩子函数和中断的回调函数很像，钩子函数的名字是固定的，在特定事件下会自动执行响应名字的钩子函数，并且钩子函数是可剪裁的，在 FreeRTOSConfig.h中配置是否启用特定的钩子函数。</p>
-<h2 id="vApplicationTickHook"><a href="#vApplicationTickHook" class="headerlink" title="vApplicationTickHook"></a>vApplicationTickHook</h2><p>节拍中断可以选择是否回调一个钩子函数，这个钩子函数允许实现一些周期性的功能。</p>
-<p>使用节拍中断钩子函数，需要将 <code>configUSE_TICK_HOOK</code>设置为1，同时钩子函数申明为如下原型：</p>
-<p><code>void vApplicationTickHook( void )</code></p>
-<p>这个钩子函数必须很短且占用堆栈空间很少，因为这是在中断中调用的函数，同时，只能调用以<strong>FromISR</strong>结尾的<strong>API</strong>函数。</p>
 ]]></content>
       <categories>
         <category>嵌入式</category>
@@ -451,7 +451,7 @@
 <h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
 
 <p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$hexo</span> deploy</span><br></pre></td></tr></table></figure>
 
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 <h2 id="关于搜索"><a href="#关于搜索" class="headerlink" title="关于搜索"></a>关于搜索</h2><p><a href="https://butterfly.js.org/posts/ceeb73f/#%E6%90%9C%E7%B4%A2">https://butterfly.js.org/posts/ceeb73f/#%E6%90%9C%E7%B4%A2</a></p>
@@ -939,8 +939,67 @@
   <entry>
     <title>Linux find 命令笔记</title>
     <url>//article/linux/find-command/</url>
-    <content><![CDATA[<h2 id="一-基本查找"><a href="#一-基本查找" class="headerlink" title="一. 基本查找"></a>一. 基本查找</h2><p>查找指定<code>目录</code>中的所有<code>文件</code>和<code>目录</code>：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">find /home/user</span><br><span class="line">sudo find /usr/share</span><br></pre></td></tr></table></figure>
+    <content><![CDATA[<h2 id="一-基本查找"><a href="#一-基本查找" class="headerlink" title="一. 基本查找"></a>一. 基本查找</h2><h3 id="查找指定目录中的所有文件和目录"><a href="#查找指定目录中的所有文件和目录" class="headerlink" title="查找指定目录中的所有文件和目录"></a>查找指定<code>目录</code>中的所有<code>文件</code>和<code>目录</code></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">find /home/user</span><br><span class="line">sudo find /usr/share</span><br></pre></td></tr></table></figure>
+
+<h3 id="查找指定目录中的指定文件"><a href="#查找指定目录中的指定文件" class="headerlink" title="查找指定目录中的指定文件"></a>查找指定目录中的指定文件</h3><p>查找 <code>/etc</code> 目录下的 <code>hosts</code> 文件。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">find /etc -name <span class="string">&quot;hosts&quot;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">╭─zsf@xiaotupo ~/hexo_blog  ‹main*› </span><br><span class="line">╰─➤  sudo find /etc -name <span class="string">&quot;hosts&quot;</span>                                                                                                             1 ↵</span><br><span class="line">[sudo] zsf 的密码：</span><br><span class="line">/etc/hosts</span><br><span class="line">/etc/avahi/hosts</span><br></pre></td></tr></table></figure>
+
+<h2 id="按文件类型查找"><a href="#按文件类型查找" class="headerlink" title="按文件类型查找"></a>按文件类型查找</h2><ol>
+<li>查找指定目录中的所有目录：<code>find /var -type d</code></li>
+<li>查找指定目录中的所有普通文件：<code>find /tmp -type f</code></li>
+</ol>
+<h2 id="按文件大小查找"><a href="#按文件大小查找" class="headerlink" title="按文件大小查找"></a>按文件大小查找</h2><ul>
+<li>查找指定目录下大于某个大小的文件</li>
+</ul>
+<p>语法：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">find /path/to/directory -size +n[ckMG]</span><br></pre></td></tr></table></figure>
+
+<p>参数：</p>
+<ul>
+<li><code>n</code> 为数字</li>
+<li><code>c</code> 表示字节</li>
+<li><code>k</code> 表示千字节</li>
+<li><code>M</code> 表示兆字节</li>
+<li><code>G</code> 表示吉字节</li>
+</ul>
+<p>例子：</p>
+<p>在 <code>/home/user</code> 目录中查找大于 10Mb 的文件。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">find /home/user -size +10M</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查找指定目录下小于某个大小的文件</li>
+</ul>
+<p>和查找指定目录中大于某个大小的文件方法类似，只不过是把 <code>-size</code> 后面的 <code>+</code> 号换成了 <code>-</code> 号而已。</p>
+<h2 id="按文件修改时间查找"><a href="#按文件修改时间查找" class="headerlink" title="按文件修改时间查找"></a>按文件修改时间查找</h2><ul>
+<li>查找指定目录中过去 <code>n</code> 天内修改过的文件</li>
+</ul>
+<p>语法：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">find /path/to/directory -mtime -n</span><br></pre></td></tr></table></figure>
+
+<p>例子：</p>
+<p>查找过去7天内修改过的文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">find /opt -mtime -7</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查找指定目录下过去 <code>n</code> 天前修改过的文件</li>
+</ul>
+<p>和过去 <code>n</code> 天内修改过的文件的查找方法类似，只是把 <code>-</code> 号换成了 <code>+</code>。</p>
+<h2 id="逻辑组合查找"><a href="#逻辑组合查找" class="headerlink" title="逻辑组合查找"></a>逻辑组合查找</h2><ul>
+<li>使用 <code>-and</code> 或 <code>-a</code> 连接多个条件进行与操作。例如：查找 <code>/data</code> 目录下即大于 10MB 又在过去7天内修改过的文件</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">find /data -size +10M -a -mtime -7</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用 <code>-or</code> 或 <code>-o</code> 连接多个条件进行或操作。例如：查找 <code>/backup</code> 目录下文件名包含 <code>backup</code> 或者扩展名为 <code>.bak</code> 的文件</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">find /backup \( -name <span class="string">&quot;*backup*&quot;</span> -o -name <span class="string">&quot;*.bak&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="执行操作"><a href="#执行操作" class="headerlink" title="执行操作"></a>执行操作</h2><p>在茶找到文件后，可以使用 <code>-exec</code> 选项对查找到的文件执行相应的操作。例如：删除 <code>/tmp</code> 目录下所有扩展名为 <code>.log</code> 的文件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">find /tmp -name <span class="string">&quot;*.log&quot;</span> -<span class="built_in">exec</span> <span class="built_in">rm</span> &#123;&#125; \;</span><br></pre></td></tr></table></figure>
+
+<p>这里的 <code>&#123;&#125;</code> 表示查找到的文件名，<code>\;</code> 是 <code>-exec</code> 命令的结束标志。</p>
 ]]></content>
       <categories>
         <category>Linux</category>
