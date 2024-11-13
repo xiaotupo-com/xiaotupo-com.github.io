@@ -1075,4 +1075,27 @@
         <tag>wxFormBuilder</tag>
       </tags>
   </entry>
+  <entry>
+    <title>不同数据库中的 SQL 自增字段类型</title>
+    <url>//article/database/sql-auto-increment/</url>
+    <content><![CDATA[<p>有时我们会用到不同的数据库，每种数据库中的 自增字段 SQL 可能不同，在此记录一下不同数据库中的自增字段。</p>
+<h2 id="MySQL-中的自增字段"><a href="#MySQL-中的自增字段" class="headerlink" title="MySQL 中的自增字段"></a>MySQL 中的自增字段</h2><p>MySQL 中的自增字段可以用 <code>AUTO_INCREMENT</code> 关键字，例子：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">table</span> student(</span><br><span class="line">    student_id <span class="type">INT</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT,</span><br><span class="line">    name <span class="type">VARCHAR</span>(<span class="number">50</span>),</span><br><span class="line">    email <span class="type">VARCHAR</span>(<span class="number">100</span>),</span><br><span class="line">    <span class="keyword">PRIMARY</span> KEY (student_id)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h2 id="PostgreSQL-中的自增字段"><a href="#PostgreSQL-中的自增字段" class="headerlink" title="PostgreSQL 中的自增字段"></a>PostgreSQL 中的自增字段</h2><p>在 <code>PostgreSQL</code> 中可以使用 <code>SERIAL</code> 或 <code>BIGSERIAL</code> 类型来定义自增字段。例子：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> student(</span><br><span class="line">    id SERIAL <span class="keyword">PRIMARY</span> KEY,</span><br><span class="line">    name <span class="type">VARCHAR</span>(<span class="number">50</span>),</span><br><span class="line">    email <span class="type">VARCHAR</span>(<span class="number">100</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h2 id="SQLite-中的自增字段"><a href="#SQLite-中的自增字段" class="headerlink" title="SQLite 中的自增字段"></a>SQLite 中的自增字段</h2><p><code>SQLite</code> 中可以用 <code>AUTOINCREMENT</code> 来创建自增字段：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> student(</span><br><span class="line">    id <span class="type">INT</span> AUTOINCREMENT <span class="keyword">PRIMARY</span> KEY,</span><br><span class="line">    name <span class="type">VARCHAR</span>(<span class="number">50</span>),</span><br><span class="line">    email <span class="type">VARCHAR</span>(<span class="number">100</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>sql</tag>
+        <tag>sqlite</tag>
+        <tag>mysql</tag>
+        <tag>PostgreSQL</tag>
+      </tags>
+  </entry>
 </search>
