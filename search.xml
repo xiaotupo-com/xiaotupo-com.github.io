@@ -842,7 +842,27 @@
 <h3 id="2-查询指定字段"><a href="#2-查询指定字段" class="headerlink" title="2. 查询指定字段"></a>2. 查询指定字段</h3><p>之查询制定字段：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlite&gt; SELECT model, price FROM phone ;</span><br><span class="line">小米13 Max|3200.01</span><br><span class="line">华为16Pro|4889.32</span><br></pre></td></tr></table></figure>
 
-<h3 id="3-条件查询"><a href="#3-条件查询" class="headerlink" title="3. 条件查询"></a>3. 条件查询</h3>]]></content>
+<h3 id="3-条件查询"><a href="#3-条件查询" class="headerlink" title="3. 条件查询"></a>3. 条件查询</h3><h2 id="SQLite-支持的字段类型"><a href="#SQLite-支持的字段类型" class="headerlink" title="SQLite 支持的字段类型"></a>SQLite 支持的字段类型</h2><ul>
+<li><code>NULL</code> 值为 <code>NULL</code></li>
+<li><code>INTEGER</code> 值为带符号的整型</li>
+<li><code>REAL</code> 浮点型，8字节长度</li>
+<li><code>TEXT</code> 字符串</li>
+<li><code>BLOB</code> 二进制数据</li>
+</ul>
+<p>一些 <code>sqlite3</code> 支持的其他类型：</p>
+<ul>
+<li><code>smallint</code> 16位整数</li>
+<li><code>interger</code> 32位整数</li>
+<li><code>decimal(p,s)</code> <code>p</code> 指全部长度，<code>s</code> 小数点后的位数</li>
+<li><code>float</code> 32位</li>
+<li><code>double</code> 64位</li>
+<li><code>char(n)</code> 固定长度的字符串</li>
+<li><code>varchar(n)</code> 长度可变的字符串 </li>
+<li><code>date</code> 日期类型</li>
+<li><code>time</code> 时间类型</li>
+<li><code>timestamp</code></li>
+</ul>
+]]></content>
       <categories>
         <category>数据库</category>
       </categories>
@@ -1096,6 +1116,56 @@
         <tag>sqlite</tag>
         <tag>mysql</tag>
         <tag>PostgreSQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux 内核链表学习笔记</title>
+    <url>//article/linux/list_head/</url>
+    <content><![CDATA[<p>在此记录下Linux 下的链表笔记，首先看一下链表的结构体定义：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">list_head</span> &#123;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">list_head</span> *<span class="title">next</span>, *<span class="title">prev</span>;</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><code>list_head</code> 结构体里面只有两个指向自己的指针，接下来看看怎么创建一个头指针。</p>
+<h2 id="创建头节点"><a href="#创建头节点" class="headerlink" title="创建头节点"></a>创建头节点</h2><p><code>Linux</code> 内核提供了 <code>LIST_HEAD()</code> 宏，宏可以方便的创建一个 <code>next</code> 和 <code>prev</code> 都指向自己的头节点。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> LIST_HEAD_INIT(name) &#123; &amp;(name), &amp;(name) &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> LIST_HEAD(name) \</span></span><br><span class="line"><span class="meta">    struct list_head name = LIST_HEAD_INIT(name)</span></span><br></pre></td></tr></table></figure>
+
+<p>例子：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">LIST_HEAD(my_list);</span><br></pre></td></tr></table></figure>
+
+<p>上面宏展开后的样子：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">list_head</span> <span class="title">my_list</span> =</span> &#123; &amp;(my_list), &amp;(my_list) &#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="将-list-head-嵌入到自己的结构体中"><a href="#将-list-head-嵌入到自己的结构体中" class="headerlink" title="将 list_head 嵌入到自己的结构体中"></a>将 list_head 嵌入到自己的结构体中</h2><p>我们在此创建一个 <code>student</code> 学生结构体如下：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> STUDENT_NAME_LEN  25</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">unsigned</span> <span class="type">char</span> STUDENT_AGE_TYPE;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Sex</span> &#123;</span> MALE, FEMALE &#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">student</span> &#123;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">list_head</span> <span class="title">list</span>;</span> <span class="comment">// 嵌入的 list_head</span></span><br><span class="line">    u64 id;</span><br><span class="line">    <span class="type">char</span> name[STUDENT_NAME_LEN];</span><br><span class="line">    STUDENT_AGE_TYPE age;</span><br><span class="line">    <span class="class"><span class="keyword">enum</span> <span class="title">Sex</span> <span class="title">sex</span>;</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<div class="note warning no-icon flat"><p><code>C</code> 语言中结构体的第一个成员的地址就是结构体的首地址，和 <code>C</code> 中的数组类似。</p>
+</div>
+
+<h2 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h2><p>草图：</p>
+<p><img src="/img/post_img/linux-list-head.png" alt="Linux 内核链表草图"></p>
+<p>这里我们写了两个函数 <code>list_add()</code> 和 <code>list_add_tail()</code>，分别是向头部插入和向尾部插入。</p>
+<p>其实也不复杂就是处理指针的指向而已，看不懂的照着草图慢慢研究。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">list_add</span><span class="params">(<span class="keyword">struct</span> list_head*new, <span class="keyword">struct</span> list_head* head)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (list_empty(head)) &#123;</span><br><span class="line">        head-&gt;next = new;</span><br><span class="line">        head-&gt;prev = new;</span><br><span class="line">        new-&gt;next = head;</span><br><span class="line">        new-&gt;prev = head;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        new-&gt;prev = head;</span><br><span class="line">        new-&gt;next = head-&gt;next;</span><br><span class="line">        head-&gt;next = new;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">list_add_tail</span><span class="params">(<span class="keyword">struct</span> list_head* new, <span class="keyword">struct</span> list_head *head)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (list_empty(head)) &#123;</span><br><span class="line">        head-&gt;next = new;</span><br><span class="line">        head-&gt;prev = new;</span><br><span class="line">        new-&gt;next = head;</span><br><span class="line">        new-&gt;prev = head;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        head-&gt;prev-&gt;next = new;</span><br><span class="line">        new-&gt;next = head;</span><br><span class="line">        new-&gt;prev = head-&gt;prev;</span><br><span class="line">        head-&gt;prev = new;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="将自定义数据插入链表中"><a href="#将自定义数据插入链表中" class="headerlink" title="将自定义数据插入链表中"></a>将自定义数据插入链表中</h2><p>这里定义了另一个函数 <code>student_add()</code></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">student_add</span><span class="params">(u64 id, <span class="type">char</span> *name, STUDENT_AGE_TYPE age, <span class="keyword">enum</span> Sex sex,</span></span><br><span class="line"><span class="params">                 <span class="keyword">struct</span> list_head *head)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">student</span> *<span class="title">stu</span> =</span> (<span class="keyword">struct</span> student *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> student));</span><br><span class="line">    stu-&gt;id = id;</span><br><span class="line">    <span class="built_in">snprintf</span>(stu-&gt;name, <span class="keyword">sizeof</span>(stu-&gt;name), <span class="string">&quot;%s&quot;</span>, name);</span><br><span class="line">    stu-&gt;age = age;</span><br><span class="line">    stu-&gt;sex = sex;</span><br><span class="line">    list_add_tail(&amp;stu-&gt;<span class="built_in">list</span>, head);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>通过替换上面最后一行的 <code>list_add_tail(&amp;stu-&gt;list, head);</code> 为 <code>list_add(&amp;stu-&gt;list, head);</code> 即可切换插入的位置。</p>
+<h2 id="遍历打印链表"><a href="#遍历打印链表" class="headerlink" title="遍历打印链表"></a>遍历打印链表</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/********************************************************************************</span></span><br><span class="line"><span class="comment"> * @brief 遍历打印 student 链表</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * @param head </span></span><br><span class="line"><span class="comment"> ********************************************************************************/</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">student_print</span><span class="params">(<span class="keyword">struct</span> list_head *head)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">list_head</span> *<span class="title">pos</span>;</span></span><br><span class="line">    list_for_each(pos, head)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;id: %d, name: %s, age: %d, Sex: %s\n&quot;</span>,</span><br><span class="line">               ((<span class="keyword">struct</span> student *)pos)-&gt;id, ((<span class="keyword">struct</span> student *)pos)-&gt;name,</span><br><span class="line">               ((<span class="keyword">struct</span> student *)pos)-&gt;age, sex_get_str(((<span class="keyword">struct</span> student *)pos)-&gt;sex));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>遍历打印用到了一个新的宏 <code>list_for_each(pos, head)</code>, 该宏展开后的样子：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (pos = (head)-&gt;next; !list_is_head(pos, (head)); pos = pos-&gt;next)</span><br></pre></td></tr></table></figure>
+
+<p>该宏的定义：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> list_for_each(pos, head) \</span></span><br><span class="line"><span class="meta">    for (pos = (head)-&gt;next; !list_is_head(pos, (head)); pos = pos-&gt;next)</span></span><br></pre></td></tr></table></figure>
+
+<p>以上是最近学习 <code>Linux</code> 内核链表的一些笔记。</p>
+]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>链表</tag>
       </tags>
   </entry>
 </search>
