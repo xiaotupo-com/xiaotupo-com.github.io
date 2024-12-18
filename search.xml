@@ -1321,4 +1321,25 @@
         <tag>中断</tag>
       </tags>
   </entry>
+  <entry>
+    <title>AT32 滴答定时器 LED 闪烁</title>
+    <url>//article/at32/systick-led/</url>
+    <content><![CDATA[<p>在此分享一下 <code>AT32 Work Bench</code> 创建的滴答定时器 <code>LED</code> 闪灯程序，程序只用到了一个 <code>LED</code>，下面是具体的内容。</p>
+<p>配置 <code>system</code></p>
+<p><img src="/img/post_img/systick-led-01.png" alt="system 配置"></p>
+<p>要把时基源参数中的<strong>延时模式</strong>选择为<strong>中断</strong>，否则的话不会启动中断函数。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">// main.c</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="comment">/* add user code begin 1 */</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">/* add user code end 1 */</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">/* system clock config. */</span></span><br><span class="line">  wk_system_clock_config();</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* config periph clock. */</span></span><br><span class="line">  wk_periph_clock_config();</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* nvic config. */</span></span><br><span class="line">  wk_nvic_config();</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* timebase config. */</span></span><br><span class="line">  wk_timebase_init();</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* init gpio function. */</span></span><br><span class="line">  wk_gpio_config();</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* add user code begin 2 */</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">/* add user code end 2 */</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="comment">/* add user code begin 3 */</span></span><br><span class="line">    <span class="keyword">if</span> (led_count &gt;= <span class="number">500</span>) &#123;</span><br><span class="line">      gpio_bits_write(LED2_GPIO_PORT, LED2_PIN, led2_flag = !led2_flag);</span><br><span class="line">      led_count = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/* add user code end 3 */</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// at32f435_437_int.c</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">SysTick_Handler</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">  led_count++;</span><br><span class="line"></span><br><span class="line">  wk_timebase_handler();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>嵌入式</category>
+      </categories>
+      <tags>
+        <tag>AT32</tag>
+        <tag>systick</tag>
+        <tag>滴答定时器</tag>
+        <tag>LED</tag>
+        <tag>定时器</tag>
+      </tags>
+  </entry>
 </search>
