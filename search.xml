@@ -1342,4 +1342,51 @@
         <tag>定时器</tag>
       </tags>
   </entry>
+  <entry>
+    <title>流程图使用笔记</title>
+    <url>//article/other/flow-chart/</url>
+    <content><![CDATA[<p>写这篇流程图使用笔记，是因为想用流程图可视化的整理自己的逻辑。</p>
+<h2 id="流程图类型"><a href="#流程图类型" class="headerlink" title="流程图类型"></a>流程图类型</h2><ul>
+<li>基本流程图</li>
+<li>数据流程图</li>
+<li>泳道流程图</li>
+</ul>
+<h2 id="流程图符号"><a href="#流程图符号" class="headerlink" title="流程图符号"></a>流程图符号</h2><ul>
+<li>基础符号<ul>
+<li>椭圆形 （代表开始&#x2F;结束）</li>
+<li>矩形 （表示一个过程）</li>
+<li>平行四边形（表示信息的输入&#x2F;输出）</li>
+<li>菱形（代表一个判断）</li>
+<li>箭头（表示序列流）</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>其它</category>
+      </categories>
+      <tags>
+        <tag>流程图</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>稳压二极管笔记</title>
+    <url>//article/embedded/zener-diode-note/</url>
+    <content><![CDATA[<p>稳压二极管的一些特性：</p>
+<ul>
+<li>温度特性<ul>
+<li>一般稳压值低于 6V 的稳压二极管属于齐纳击穿，温度系数是负的；</li>
+<li>高于 6V 的鱼鱼雪崩击穿，温度系数是正值</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>嵌入式</category>
+      </categories>
+      <tags>
+        <tag>二极管</tag>
+        <tag>Diode</tag>
+      </tags>
+  </entry>
 </search>
