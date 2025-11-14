@@ -1411,4 +1411,25 @@
         <tag>wxFormBuilder</tag>
       </tags>
   </entry>
+  <entry>
+    <title>hexo d 提交报 git 提交错误 Connection closed by xxx.xxx.xxx.xxx port 22</title>
+    <url>//article/git/hexo-d-command-error-issues/</url>
+    <content><![CDATA[<p>今天在执行 <code>hexo d</code> 命令来发布博客时遇到了如下报错：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo d</span><br><span class="line">INFO  Validating config</span><br><span class="line">INFO</span><br><span class="line">  ===================================================================</span><br><span class="line">      <span class="comment">#####  #    # ##### ##### ###### #####  ###### #      #   #</span></span><br><span class="line">      <span class="comment">#    # #    #   #     #   #      #    # #      #       # #</span></span><br><span class="line">      <span class="comment">#####  #    #   #     #   #####  #    # #####  #        #</span></span><br><span class="line">      <span class="comment">#    # #    #   #     #   #      #####  #      #        #</span></span><br><span class="line">      <span class="comment">#    # #    #   #     #   #      #   #  #      #        #</span></span><br><span class="line">      <span class="comment">#####   ####    #     #   ###### #    # #      ######   #</span></span><br><span class="line">                            5.2.2</span><br><span class="line">  ===================================================================</span><br><span class="line">INFO  Deploying: git</span><br><span class="line">INFO  Clearing .deploy_git folder...</span><br><span class="line">INFO  Copying files from public folder...</span><br><span class="line">INFO  Copying files from extend <span class="built_in">dirs</span>...</span><br><span class="line">On branch main</span><br><span class="line">nothing to commit, working tree clean</span><br><span class="line">Connection closed by 198.18.1.8 port 22</span><br><span class="line">fatal: Could not <span class="built_in">read</span> from remote repository.</span><br><span class="line"></span><br><span class="line">Please make sure you have the correct access rights</span><br><span class="line">and the repository exists.</span><br><span class="line">FATAL Something<span class="string">&#x27;s wrong. Maybe you can find the solution here: https://hexo.io/ocs/troubleshooting.html</span></span><br><span class="line"><span class="string"></span></span><br></pre></td></tr></table></figure>
+
+<p>报错的原因可能是网络封禁了 <code>22</code> 端口，可通过 <code>GitHub</code> 提供的备用地址 <code>ssh.github.com:443</code> 连接：</p>
+<p>在 <code>~/.ssh/</code> 目录下创建或编辑 <code>config</code> 文件（<code>Windows</code> 路径为 <code>C:\Users\你的用户名\.ssh\config</code>），添加以下内容：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">plaintext</span><br><span class="line">Host github.com</span><br><span class="line">  HostName ssh.github.com</span><br><span class="line">  Port 443</span><br><span class="line">  User git</span><br></pre></td></tr></table></figure>
+
+<p>保存后执行 <code>ssh -T git@github.com</code>，此时会自动通过 <code>443</code> 端口连接，若提示 Hi [你的用户名]! You’ve successfully authenticated… 则说明配置成功。</p>
+<p>经过上面配置config 文件后，测试发现 <code>hexo d</code> 命令可以顺利发布博客了。</p>
+]]></content>
+      <categories>
+        <category>Issues</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
 </search>
