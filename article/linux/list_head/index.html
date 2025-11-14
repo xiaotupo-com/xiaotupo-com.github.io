@@ -1,0 +1,188 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Linux 内核链表学习笔记 | 小土坡的博客</title><meta name="author" content="小土坡"><meta name="copyright" content="小土坡"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="在此记录下Linux 下的链表笔记，首先看一下链表的结构体定义： 123struct list_head &#123;    struct list_head *next, *prev;&#125;;  list_head 结构体里面只有两个指向自己的指针，接下来看看怎么创建一个头指针。 创建头节点Linux 内核提供了 LIST_HEAD() 宏，宏可以方便的创建一个 next 和 prev 都">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux 内核链表学习笔记">
+<meta property="og:url" content="https://blog.xiaotupo.com/article/linux/list_head/index.html">
+<meta property="og:site_name" content="小土坡的博客">
+<meta property="og:description" content="在此记录下Linux 下的链表笔记，首先看一下链表的结构体定义： 123struct list_head &#123;    struct list_head *next, *prev;&#125;;  list_head 结构体里面只有两个指向自己的指针，接下来看看怎么创建一个头指针。 创建头节点Linux 内核提供了 LIST_HEAD() 宏，宏可以方便的创建一个 next 和 prev 都">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.xiaotupo.com/img/2411-3.jpg">
+<meta property="article:published_time" content="2024-12-09T11:32:53.000Z">
+<meta property="article:modified_time" content="2025-11-13T13:31:44.844Z">
+<meta property="article:author" content="小土坡">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="链表">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.xiaotupo.com/img/2411-3.jpg"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://blog.xiaotupo.com/article/linux/list_head/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.2.2"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Linux 内核链表学习笔记',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  isShuoshuo: false
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(/img/1.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/logo.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">41</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">58</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/logo.png" alt="Logo"><span class="site-name">小土坡的博客</span></a><a class="nav-page-title" href="/"><span class="site-name">Linux 内核链表学习笔记</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">Linux 内核链表学习笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-12-09T11:32:53.000Z" title="发表于 2024-12-09 19:32:53">2024-12-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-11-13T13:31:44.844Z" title="更新于 2025-11-13 21:31:44">2025-11-13</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="container post-content" id="article-container"><p>在此记录下Linux 下的链表笔记，首先看一下链表的结构体定义：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">list_head</span> &#123;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">list_head</span> *<span class="title">next</span>, *<span class="title">prev</span>;</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><code>list_head</code> 结构体里面只有两个指向自己的指针，接下来看看怎么创建一个头指针。</p>
+<h2 id="创建头节点"><a href="#创建头节点" class="headerlink" title="创建头节点"></a>创建头节点</h2><p><code>Linux</code> 内核提供了 <code>LIST_HEAD()</code> 宏，宏可以方便的创建一个 <code>next</code> 和 <code>prev</code> 都指向自己的头节点。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> LIST_HEAD_INIT(name) &#123; &amp;(name), &amp;(name) &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> LIST_HEAD(name) \</span></span><br><span class="line"><span class="meta">    struct list_head name = LIST_HEAD_INIT(name)</span></span><br></pre></td></tr></table></figure>
+
+<p>例子：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LIST_HEAD(my_list);</span><br></pre></td></tr></table></figure>
+
+<p>上面宏展开后的样子：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">list_head</span> <span class="title">my_list</span> =</span> &#123; &amp;(my_list), &amp;(my_list) &#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="将-list-head-嵌入到自己的结构体中"><a href="#将-list-head-嵌入到自己的结构体中" class="headerlink" title="将 list_head 嵌入到自己的结构体中"></a>将 list_head 嵌入到自己的结构体中</h2><p>我们在此创建一个 <code>student</code> 学生结构体如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> STUDENT_NAME_LEN  25</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">unsigned</span> <span class="type">char</span> STUDENT_AGE_TYPE;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Sex</span> &#123;</span> MALE, FEMALE &#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">student</span> &#123;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">list_head</span> <span class="title">list</span>;</span> <span class="comment">// 嵌入的 list_head</span></span><br><span class="line">    u64 id;</span><br><span class="line">    <span class="type">char</span> name[STUDENT_NAME_LEN];</span><br><span class="line">    STUDENT_AGE_TYPE age;</span><br><span class="line">    <span class="class"><span class="keyword">enum</span> <span class="title">Sex</span> <span class="title">sex</span>;</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<div class="note warning no-icon flat"><p><code>C</code> 语言中结构体的第一个成员的地址就是结构体的首地址，和 <code>C</code> 中的数组类似。</p>
+</div>
+
+<h2 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h2><p>草图：</p>
+<p><img src="/img/post_img/linux-list-head.png" alt="Linux 内核链表草图"></p>
+<p>这里我们写了两个函数 <code>list_add()</code> 和 <code>list_add_tail()</code>，分别是向头部插入和向尾部插入。</p>
+<p>其实也不复杂就是处理指针的指向而已，看不懂的照着草图慢慢研究。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">list_add</span><span class="params">(<span class="keyword">struct</span> list_head*new, <span class="keyword">struct</span> list_head* head)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (list_empty(head)) &#123;</span><br><span class="line">        head-&gt;next = new;</span><br><span class="line">        head-&gt;prev = new;</span><br><span class="line">        new-&gt;next = head;</span><br><span class="line">        new-&gt;prev = head;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        new-&gt;prev = head;</span><br><span class="line">        new-&gt;next = head-&gt;next;</span><br><span class="line">        head-&gt;next = new;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">list_add_tail</span><span class="params">(<span class="keyword">struct</span> list_head* new, <span class="keyword">struct</span> list_head *head)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (list_empty(head)) &#123;</span><br><span class="line">        head-&gt;next = new;</span><br><span class="line">        head-&gt;prev = new;</span><br><span class="line">        new-&gt;next = head;</span><br><span class="line">        new-&gt;prev = head;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        head-&gt;prev-&gt;next = new;</span><br><span class="line">        new-&gt;next = head;</span><br><span class="line">        new-&gt;prev = head-&gt;prev;</span><br><span class="line">        head-&gt;prev = new;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="将自定义数据插入链表中"><a href="#将自定义数据插入链表中" class="headerlink" title="将自定义数据插入链表中"></a>将自定义数据插入链表中</h2><p>这里定义了另一个函数 <code>student_add()</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">student_add</span><span class="params">(u64 id, <span class="type">char</span> *name, STUDENT_AGE_TYPE age, <span class="keyword">enum</span> Sex sex,</span></span><br><span class="line"><span class="params">                 <span class="keyword">struct</span> list_head *head)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">student</span> *<span class="title">stu</span> =</span> (<span class="keyword">struct</span> student *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> student));</span><br><span class="line">    stu-&gt;id = id;</span><br><span class="line">    <span class="built_in">snprintf</span>(stu-&gt;name, <span class="keyword">sizeof</span>(stu-&gt;name), <span class="string">&quot;%s&quot;</span>, name);</span><br><span class="line">    stu-&gt;age = age;</span><br><span class="line">    stu-&gt;sex = sex;</span><br><span class="line">    list_add_tail(&amp;stu-&gt;<span class="built_in">list</span>, head);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>通过替换上面最后一行的 <code>list_add_tail(&amp;stu-&gt;list, head);</code> 为 <code>list_add(&amp;stu-&gt;list, head);</code> 即可切换插入的位置。</p>
+<h2 id="遍历打印链表"><a href="#遍历打印链表" class="headerlink" title="遍历打印链表"></a>遍历打印链表</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/********************************************************************************</span></span><br><span class="line"><span class="comment"> * @brief 遍历打印 student 链表</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * @param head </span></span><br><span class="line"><span class="comment"> ********************************************************************************/</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">student_print</span><span class="params">(<span class="keyword">struct</span> list_head *head)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">list_head</span> *<span class="title">pos</span>;</span></span><br><span class="line">    list_for_each(pos, head)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;id: %d, name: %s, age: %d, Sex: %s\n&quot;</span>,</span><br><span class="line">               ((<span class="keyword">struct</span> student *)pos)-&gt;id, ((<span class="keyword">struct</span> student *)pos)-&gt;name,</span><br><span class="line">               ((<span class="keyword">struct</span> student *)pos)-&gt;age, sex_get_str(((<span class="keyword">struct</span> student *)pos)-&gt;sex));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>遍历打印用到了一个新的宏 <code>list_for_each(pos, head)</code>, 该宏展开后的样子：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (pos = (head)-&gt;next; !list_is_head(pos, (head)); pos = pos-&gt;next)</span><br></pre></td></tr></table></figure>
+
+<p>该宏的定义：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> list_for_each(pos, head) \</span></span><br><span class="line"><span class="meta">    for (pos = (head)-&gt;next; !list_is_head(pos, (head)); pos = pos-&gt;next)</span></span><br></pre></td></tr></table></figure>
+
+<p>以上是最近学习 <code>Linux</code> 内核链表的一些笔记。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://blog.xiaotupo.com">小土坡</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://blog.xiaotupo.com/article/linux/list_head/">https://blog.xiaotupo.com/article/linux/list_head/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://blog.xiaotupo.com" target="_blank">小土坡的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Linux/">Linux</a><a class="post-meta__tags" href="/tags/%E9%93%BE%E8%A1%A8/">链表</a></div><div class="post-share"><div class="social-share" data-image="/img/2411-3.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/article/clang-format/" title="clang-format 格式化工具"><img class="cover" src="/img/1.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">clang-format 格式化工具</div></div><div class="info-2"><div class="info-item-1">在格式化 c/c++ 代码时会用到 clang-format 这个工具，在此做个简短的记录。 clang-format 下载地址：https://llvm.org/builds/ .clang-format123456BasedOnStyle: LLVM # LLVM, GoogleIndentWidth: 4ColumnLimit: 81BreakBeforeBraces: LinuxAllowShortLoopsOnASingleLine:   trueAllowShortBlocksOnASingleLine:  true   BreakBeforeBraces: Linux 设置为 Linux 则函数的大括号单独一行，if for 等的开始大括号不会单独一行。   IndentWidth: 4 缩进设为4个空格   BasedOnStyle 设置基础样式，选择LLVM比较好    </div></div></div></a><a class="pagination-related" href="/article/database/sql-auto-increment/" title="不同数据库中的 SQL 自增字段类型"><img class="cover" src="/img/23.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">不同数据库中的 SQL 自增字段类型</div></div><div class="info-2"><div class="info-item-1">有时我们会用到不同的数据库，每种数据库中的 自增字段 SQL 可能不同，在此记录一下不同数据库中的自增字段。 MySQL 中的自增字段MySQL 中的自增字段可以用 AUTO_INCREMENT 关键字，例子： 123456CREATE table student(    student_id INT NOT NULL AUTO_INCREMENT,    name VARCHAR(50),    email VARCHAR(100),    PRIMARY KEY (student_id));  PostgreSQL 中的自增字段在 PostgreSQL 中可以使用 SERIAL 或 BIGSERIAL 类型来定义自增字段。例子： 12345CREATE TABLE student(    id SERIAL PRIMARY KEY,    name VARCHAR(50),    email VARCHAR(100));  SQLite 中的自增字段SQLite 中可以用 AUTOINCREMENT 来创建自增字段： 12345CREATE TABLE student(  ...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/article/linux/tree-command/" title="linux tree command"><img class="cover" src="/img/2.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-27</div><div class="info-item-2">linux tree command</div></div><div class="info-2"><div class="info-item-1">在此记录下Linux 中的 tree 命令笔记。 指定输出目录层级 -L我们可以用 -L 加数字的方式指定 tree 命令只输出指定深度的文件夹。 1tree -L 2  只输出2层文件夹的内容。 忽略指定文件夹1tree -I &#x27;node_modules|target|build&#x27;  我们可以用 | 来指定多个要忽略的文件夹。 </div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">小土坡</div><div class="author-info-description">小土坡的博客是一个分享电子技术的博客站点，分享电路、功放、电源、电子实验、器材分享。</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">41</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">58</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xiaotupo-com"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/xiaotupo-com" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:xiaotupo@136.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%A4%B4%E8%8A%82%E7%82%B9"><span class="toc-number">1.</span> <span class="toc-text">创建头节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%86-list-head-%E5%B5%8C%E5%85%A5%E5%88%B0%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BB%93%E6%9E%84%E4%BD%93%E4%B8%AD"><span class="toc-number">2.</span> <span class="toc-text">将 list_head 嵌入到自己的结构体中</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE"><span class="toc-number">3.</span> <span class="toc-text">插入数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%86%E8%87%AA%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE%E6%8F%92%E5%85%A5%E9%93%BE%E8%A1%A8%E4%B8%AD"><span class="toc-number">4.</span> <span class="toc-text">将自定义数据插入链表中</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%81%8D%E5%8E%86%E6%89%93%E5%8D%B0%E9%93%BE%E8%A1%A8"><span class="toc-number">5.</span> <span class="toc-text">遍历打印链表</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/article/hello-world/" title="Hello World"><img src="/img/2411-11.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/article/hello-world/" title="Hello World">Hello World</a><time datetime="2025-11-13T13:31:44.843Z" title="发表于 2025-11-13 21:31:44">2025-11-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/article/C++%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/" title="C++ 中的构造函数"><img src="/img/17.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C++ 中的构造函数"/></a><div class="content"><a class="title" href="/article/C++%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/" title="C++ 中的构造函数">C++ 中的构造函数</a><time datetime="2025-11-13T13:31:44.837Z" title="发表于 2025-11-13 21:31:44">2025-11-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/article/linux/tree-command/" title="linux tree command"><img src="/img/2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="linux tree command"/></a><div class="content"><a class="title" href="/article/linux/tree-command/" title="linux tree command">linux tree command</a><time datetime="2025-03-27T02:49:23.000Z" title="发表于 2025-03-27 10:49:23">2025-03-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/article/docker/docker-hexo-setting/" title="用 Docker 搭建 hexo 博客环境"><img src="/img/25.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="用 Docker 搭建 hexo 博客环境"/></a><div class="content"><a class="title" href="/article/docker/docker-hexo-setting/" title="用 Docker 搭建 hexo 博客环境">用 Docker 搭建 hexo 博客环境</a><time datetime="2025-03-15T22:10:16.000Z" title="发表于 2025-03-16 06:10:16">2025-03-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/article/at32/get_unique_id/" title="AT32 获取芯片唯一ID"><img src="/img/1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="AT32 获取芯片唯一ID"/></a><div class="content"><a class="title" href="/article/at32/get_unique_id/" title="AT32 获取芯片唯一ID">AT32 获取芯片唯一ID</a><time datetime="2025-01-04T12:51:02.000Z" title="发表于 2025-01-04 20:51:02">2025-01-04</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2025 By 小土坡</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.2.2"></script><script src="/js/main.js?v=5.2.2"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.2.2"></script></div></div></body></html>

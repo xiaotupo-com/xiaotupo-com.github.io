@@ -1,0 +1,218 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>小土坡的博客 - 过去这道坎你一定会成功，永远相信自己自己是正确的...</title><meta name="author" content="小土坡"><meta name="copyright" content="小土坡"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="小土坡的博客是一个分享电子技术的博客站点，分享电路、功放、电源、电子实验、器材分享。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="小土坡的博客">
+<meta property="og:url" content="https://blog.xiaotupo.com/page/3/index.html">
+<meta property="og:site_name" content="小土坡的博客">
+<meta property="og:description" content="小土坡的博客是一个分享电子技术的博客站点，分享电路、功放、电源、电子实验、器材分享。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.xiaotupo.com/img/logo.png">
+<meta property="article:author" content="小土坡">
+<meta property="article:tag" content="电路实验,电子电路,功放设计,电子器材,实验电源,学习,开源,编程">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.xiaotupo.com/img/logo.png"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://blog.xiaotupo.com/page/3/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.2.2"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '小土坡的博客',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  isShuoshuo: false
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(/img/1.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/logo.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">41</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">58</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/logo.png" alt="Logo"><span class="site-name">小土坡的博客</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><h1 class="title-seo">小土坡的博客</h1></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/article/embedded/ssd1306-init-note/" title="SSD1306 初始化遇到屏幕花屏的调试笔记">SSD1306 初始化遇到屏幕花屏的调试笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-06-15T11:29:22.000Z" title="发表于 2024-06-15 19:29:22">2024-06-15</time></span></div><div class="content">在调试 SSD1306 驱动 0.96寸 OLED 时，遇到了在初始化完成后全屏点亮时花屏，最后发现去掉这两行命令后回复正常： 1234// 设置起始页地址，假设从第0页开始sendCommand(0x22);// 设置页地址指令sendCommand(0x00);// 设置起始页地址，这里设为第0页// 注意：对于128x64的SSD1306，页地址范围是0到7（共8页）  花屏图片：  </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/article/at32/at32-nvic-priority-group/" title="AT32 配置nvic优先级组">AT32 配置nvic优先级组</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-03-12T10:36:54.000Z" title="发表于 2024-03-12 18:36:54">2024-03-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/">嵌入式</a></span></div><div class="content">在学习 At32 的过程中遇到了nvic优先级组，在此做个记录方便以后查阅。at32的固件库中 NVIC 相关的 API 在 at32f413_misc.c 文件中。 nvic_priority_group_typenvic_priority_group_type 枚举类型，定义了5中分组类型，定义如下： 1234567891011/**  * @brief nvic interrupt priority group  */typedef enum&#123;  NVIC_PRIORITY_GROUP_0                  = ((uint32_t)0x7), /*!&lt; 0 bits for preemption priority, 4 bits for subpriority */  NVIC_PRIORITY_GROUP_1                  = ((uint32_t)0x6), /*!&lt; 1 bits for preemption priority, 3 bits for subpriority */ ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/article/at32/at32-system-color-clock/" title="AT32 打印输出 SystemCoreClock 的值">AT32 打印输出 SystemCoreClock 的值</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-03-11T15:05:23.000Z" title="发表于 2024-03-11 23:05:23">2024-03-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/">嵌入式</a></span></div><div class="content">这里简单演示下打印输出 SystemCoreClock 的值，我用的 MCU 为 at32f413，最大频率为 200MHz。 我的配置：  配置代码时钟的配置可以用 AT32 官方提供的时钟配置工具（AT32_New_Clock_Configuration.exe）来生成。 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950void system_clock_config(void)&#123;  /* reset crm */  crm_reset();  // 使用外部 8MHz 晶振  crm_clock_source_enable(CRM_CLOCK_SOURCE_HEXT, TRUE);   /* wait till hext is ready */  while(crm_hext_stable_wait() == ERROR)  &#123;  &#125;  /* config pll clock resource */ ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/article/freertos/freertos-config/" title="FreeRTOS 配置文件笔记">FreeRTOS 配置文件笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-03-11T11:26:01.000Z" title="发表于 2024-03-11 19:26:01">2024-03-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/">嵌入式</a></span></div><div class="content">FreeRTOSConfig.h 是 FreeRTOS 中的配置文件，通过配置该文件可以裁剪使用哪些 FreeRTOS 功能。 网站的 FreeRTOSConfig.h 配置文件很大有很多配置选项，但是有很多选项是有默认值的，我们只需配置我们使用的选项即可。 下面是一份...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/projects/TM3608-double-power/" title="TM3608 可调升压双电源开源项目分享">TM3608 可调升压双电源开源项目分享</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-03-10T14:35:36.000Z" title="发表于 2024-03-10 22:35:36">2024-03-10</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a></span></div><div class="content">最近做了一个双电源升压模块，可以把一个低的电压升压为正负电压。芯片用的是 MT3608，特此分享出来给大家。 供电输入可以选择 USB 也可以选择 6P的排针，通过调节2个电位器可以调整正负输出电压的高低。 原理图 成品 力创开源硬件平台https://oshwhub.com/zsf90/mt3608_power_double </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/article/freertos-button/" title="FreeRTOS 按键程序代码笔记">FreeRTOS 按键程序代码笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-03-06T17:28:37.000Z" title="发表于 2024-03-07 01:28:37">2024-03-07</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/">嵌入式</a></span></div><div class="content">在这里分享一个我写到基于 FreeRTOS 的按键程序，只是自己的一个思路，欢迎讨论。 数据结构定义123456789101112131415161718192021222324252627282930313233343536373839404142434445464748//// File: xtp_defines.h//#ifndef __XTP_DEFINES_H#define __XTP_DEFINES_H#include &quot;at32f413.h&quot;#include &lt;stdbool.h&gt;#include &lt;stdio.h&gt;#define USE_FREERTOS (1) // 1:使用 FreeRTOS 0:不使用 FreeRTOS#define AT32#define LED#if USE_FREERTOS#include &quot;FreeRTOS.h&quot;#include &quot;task.h&quot;#endif#ifdef LED#include...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/article/freertos-hook-function/" title="FreeRTOS钩子函数">FreeRTOS钩子函数</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-03-06T16:46:59.000Z" title="发表于 2024-03-07 00:46:59">2024-03-07</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/">嵌入式</a></span></div><div class="content">FreeRTOS 中的钩子函数和中断的回调函数很像，钩子函数的名字是固定的，在特定事件下会自动执行响应名字的钩子函数，并且钩子函数是可剪裁的，在 FreeRTOSConfig.h中配置是否启用特定的钩子函数。 vApplicationTickHook节拍中断可以选择是否回调一个钩子函数，这个钩子函数允许实现一些周期性的功能。 使用节拍中断钩子函数，需要将 configUSE_TICK_HOOK设置为1，同时钩子函数申明为如下原型： void vApplicationTickHook( void ) 这个钩子函数必须很短且占用堆栈空间很少，因为这是在中断中调用的函数，同时，只能调用以FromISR结尾的API函数。 </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/article/kicad-lib-note/" title="KiCAD 官方库笔记">KiCAD 官方库笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-03-04T10:15:55.000Z" title="发表于 2024-03-04 18:15:55">2024-03-04</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1/">电路设计</a></span></div><div class="content"> Symbol 一些标志丝印，如：CE/ESD/FCC/KiCad/OSHW 等Logo。 TerminalBlock_Altech P5.0mm 45度端子    TerminalBlock_Phoenix 5.08 绿色端子    TestPoint 测试点    Valve 电子管 Varistor 压敏电阻插件    Sensor 传感器 Rotary_Encoder 旋转编码器，EC11等 FR_Shielding 屏蔽罩 FR_Module 常见射频模块，如：ESP32模块等 Resistor_THT 插件电阻 Resistor_SMD 贴片电阻 Relay_THT 插件继电器 Relay_SMD 贴片继电器 Potentiometer_THT 插件电位器 Potentiometer_SMD 贴片电位器 Package_TO_SOT_THT TO和SOT系列封装插件版，TO-220等 Package_TO_SOT_SMD TO和SOT系列封装贴片版，SOT-223-5等 Package_SO SO封装 Package_SON SON封装 Package_SIP...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/article/wpf-style/" title="WPF 样式小记">WPF 样式小记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-02-28T13:18:46.000Z" title="发表于 2024-02-28 21:18:46">2024-02-28</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a></span></div><div class="content">WPF 中的 Style 和 html 中的 css 是类似的东西，都是定义UI样式，WPF 中的样式可以继承，下面就来了解下 WPF 中的样式使用方法。 定义一个简单的样式这里我们给所有的 Button 定义一个样式，类似与 CSS 中的元素选择器，这里我们选择的元素就是 WPF 中的 Button。 12345678910111213141516171819202122&lt;Window    x:Class=&quot;Style.MainWindow&quot;    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;    xmlns:d=&quot;http://schemas.microsoft.com/expression/blend/2008&quot;   ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/article/wpf-message-box/" title="WPF 消息框例子">WPF 消息框例子</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-02-27T04:41:08.000Z" title="发表于 2024-02-27 12:41:08">2024-02-27</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a></span></div><div class="content">这篇文章记录了 WPF 中的 MessageBox 的使用，给出了详细的代码例子。 消息框1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071namespace Dialogs&#123;    /// &lt;summary&gt;    /// Interaction logic for MainWindow.xaml    /// &lt;/summary&gt;    public partial class MainWindow : Window    &#123;        public MainWindow()        &#123;            InitializeComponent();        &#125;        private void messageBoxHandle(object sender,...</div></div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/2/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#content-inner">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/#content-inner">4</a><a class="page-number" href="/page/5/#content-inner">5</a><a class="extend next" rel="next" href="/page/4/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">小土坡</div><div class="author-info-description">小土坡的博客是一个分享电子技术的博客站点，分享电路、功放、电源、电子实验、器材分享。</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">41</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">58</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xiaotupo-com"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/xiaotupo-com" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:xiaotupo@136.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/article/hello-world/" title="Hello World"><img src="/img/2411-11.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/article/hello-world/" title="Hello World">Hello World</a><time datetime="2025-11-13T13:31:44.843Z" title="发表于 2025-11-13 21:31:44">2025-11-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/article/C++%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/" title="C++ 中的构造函数"><img src="/img/17.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C++ 中的构造函数"/></a><div class="content"><a class="title" href="/article/C++%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/" title="C++ 中的构造函数">C++ 中的构造函数</a><time datetime="2025-11-13T13:31:44.837Z" title="发表于 2025-11-13 21:31:44">2025-11-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/article/linux/tree-command/" title="linux tree command"><img src="/img/2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="linux tree command"/></a><div class="content"><a class="title" href="/article/linux/tree-command/" title="linux tree command">linux tree command</a><time datetime="2025-03-27T02:49:23.000Z" title="发表于 2025-03-27 10:49:23">2025-03-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/article/docker/docker-hexo-setting/" title="用 Docker 搭建 hexo 博客环境"><img src="/img/25.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="用 Docker 搭建 hexo 博客环境"/></a><div class="content"><a class="title" href="/article/docker/docker-hexo-setting/" title="用 Docker 搭建 hexo 博客环境">用 Docker 搭建 hexo 博客环境</a><time datetime="2025-03-15T22:10:16.000Z" title="发表于 2025-03-16 06:10:16">2025-03-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/article/at32/get_unique_id/" title="AT32 获取芯片唯一ID"><img src="/img/1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="AT32 获取芯片唯一ID"/></a><div class="content"><a class="title" href="/article/at32/get_unique_id/" title="AT32 获取芯片唯一ID">AT32 获取芯片唯一ID</a><time datetime="2025-01-04T12:51:02.000Z" title="发表于 2025-01-04 20:51:02">2025-01-04</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            <a class="card-more-btn" href="/categories/" title="查看更多">
+      <i class="fas fa-angle-right"></i></a>
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Docker/"><span class="card-category-list-name">Docker</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Issues/"><span class="card-category-list-name">Issues</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Linux/"><span class="card-category-list-name">Linux</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%85%B6%E5%AE%83/"><span class="card-category-list-name">其它</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/"><span class="card-category-list-name">嵌入式</span><span class="card-category-list-count">16</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"><span class="card-category-list-name">数据库</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"><span class="card-category-list-name">数据结构</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1/"><span class="card-category-list-name">电路设计</span><span class="card-category-list-count">2</span></a></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/Linux/" style="font-size: 1.3em; color: #99a1ac">Linux</a> <a href="/tags/%E5%8D%87%E5%8E%8B%E7%94%B5%E6%BA%90/" style="font-size: 1.1em; color: #999">升压电源</a> <a href="/tags/AT32/" style="font-size: 1.5em; color: #99a9bf">AT32</a> <a href="/tags/wxFormBuilder/" style="font-size: 1.1em; color: #999">wxFormBuilder</a> <a href="/tags/Blog/" style="font-size: 1.1em; color: #999">Blog</a> <a href="/tags/systick/" style="font-size: 1.1em; color: #999">systick</a> <a href="/tags/Clion/" style="font-size: 1.1em; color: #999">Clion</a> <a href="/tags/%E6%BB%B4%E7%AD%94%E5%AE%9A%E6%97%B6%E5%99%A8/" style="font-size: 1.1em; color: #999">滴答定时器</a> <a href="/tags/SSD1306/" style="font-size: 1.1em; color: #999">SSD1306</a> <a href="/tags/LED/" style="font-size: 1.1em; color: #999">LED</a> <a href="/tags/LTspice/" style="font-size: 1.1em; color: #999">LTspice</a> <a href="/tags/KiCad/" style="font-size: 1.1em; color: #999">KiCad</a> <a href="/tags/Vim/" style="font-size: 1.1em; color: #999">Vim</a> <a href="/tags/Style/" style="font-size: 1.1em; color: #999">Style</a> <a href="/tags/%E6%8C%89%E9%94%AE/" style="font-size: 1.3em; color: #99a1ac">按键</a> <a href="/tags/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/" style="font-size: 1.1em; color: #999">开源项目</a> <a href="/tags/%E4%B8%AD%E6%96%AD/" style="font-size: 1.1em; color: #999">中断</a> <a href="/tags/WPF/" style="font-size: 1.3em; color: #99a1ac">WPF</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 1.1em; color: #999">字符串</a> <a href="/tags/find/" style="font-size: 1.1em; color: #999">find</a> <a href="/tags/%E5%8D%95%E7%89%87%E6%9C%BA/" style="font-size: 1.1em; color: #999">单片机</a> <a href="/tags/sqlite/" style="font-size: 1.1em; color: #999">sqlite</a> <a href="/tags/clang-format/" style="font-size: 1.1em; color: #999">clang-format</a> <a href="/tags/%E6%95%B0%E7%BB%84/" style="font-size: 1.1em; color: #999">数组</a> <a href="/tags/%E5%94%AF%E4%B8%80ID/" style="font-size: 1.1em; color: #999">唯一ID</a> <a href="/tags/%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/" style="font-size: 1.1em; color: #999">构造函数</a> <a href="/tags/%E5%AE%9A%E6%97%B6%E5%99%A8/" style="font-size: 1.1em; color: #999">定时器</a> <a href="/tags/%E4%BA%8C%E6%9E%81%E7%AE%A1/" style="font-size: 1.1em; color: #999">二极管</a> <a href="/tags/wxWidgets/" style="font-size: 1.3em; color: #99a1ac">wxWidgets</a> <a href="/tags/linux/" style="font-size: 1.1em; color: #999">linux</a> <a href="/tags/%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81/" style="font-size: 1.1em; color: #999">中文乱码</a> <a href="/tags/SystemCoreClock/" style="font-size: 1.1em; color: #999">SystemCoreClock</a> <a href="/tags/Docker/" style="font-size: 1.1em; color: #999">Docker</a> <a href="/tags/%E6%8C%89%E9%94%AE%E9%95%BF%E6%8C%89/" style="font-size: 1.1em; color: #999">按键长按</a> <a href="/tags/PostgreSQL/" style="font-size: 1.1em; color: #999">PostgreSQL</a> <a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 1.1em; color: #999">链表</a> <a href="/tags/sql/" style="font-size: 1.1em; color: #999">sql</a> <a href="/tags/sqlite3/" style="font-size: 1.1em; color: #999">sqlite3</a> <a href="/tags/OLED/" style="font-size: 1.1em; color: #999">OLED</a> <a href="/tags/Hexo/" style="font-size: 1.3em; color: #99a1ac">Hexo</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      <a class="card-more-btn" href="/archives/" title="查看更多"><i class="fas fa-angle-right"></i></a>
+    </div>
+    <ul class="card-archive-list">
+  
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2025/11/">
+          <span class="card-archive-list-date">十一月 2025</span>
+          <span class="card-archive-list-count">2</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2025/03/">
+          <span class="card-archive-list-date">三月 2025</span>
+          <span class="card-archive-list-count">2</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2025/01/">
+          <span class="card-archive-list-date">一月 2025</span>
+          <span class="card-archive-list-count">1</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/12/">
+          <span class="card-archive-list-date">十二月 2024</span>
+          <span class="card-archive-list-count">9</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/11/">
+          <span class="card-archive-list-date">十一月 2024</span>
+          <span class="card-archive-list-count">3</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/07/">
+          <span class="card-archive-list-date">七月 2024</span>
+          <span class="card-archive-list-count">1</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/06/">
+          <span class="card-archive-list-date">六月 2024</span>
+          <span class="card-archive-list-count">3</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/03/">
+          <span class="card-archive-list-date">三月 2024</span>
+          <span class="card-archive-list-count">7</span>
+        </a>
+      </li>
+    </ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">41</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-11-14T11:41:30.090Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2025 By 小土坡</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.2.2"></script><script src="/js/main.js?v=5.2.2"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.2.2"></script></div></div></body></html>
