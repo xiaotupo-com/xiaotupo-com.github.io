@@ -1464,4 +1464,87 @@
         <tag>调试</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Verilog define 预处理语法</title>
+    <url>//article/verilog/verilog-define-syntax/</url>
+    <content><![CDATA[<p>学习 <code>Verilog</code> 的时候发现了一些以 “`“开关的代码，还有类似C语言中的 <code>#define</code> 这样的宏定义语法，但是 <code>verilog</code> 中这样的”`define COUNTER_WIDTH 25” 。</p>
+<p>看下下面代码：</p>
+<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="meta">`<span class="keyword">define</span> COUNTER_WIDTH 25</span></span><br><span class="line"><span class="meta">`<span class="keyword">define</span> COUNTER_MAX 25_000_000</span></span><br></pre></td></tr></table></figure>
+
+<p>首先 ` 反引号是 <code>Verilog/SystemVerilog</code> 的预处理指令前缀。</p>
+<p>verilog 中类似的符号：</p>
+<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line">&#x27; 单引号（<span class="keyword">bit</span>-select / 数值宽度）</span><br><span class="line"><span class="string">&quot; 字符串</span></span><br><span class="line"><span class="string">` 反引号（预处理前缀）</span></span><br></pre></td></tr></table></figure>
+
+<p>在 Verilog&#x2F;SystemVerilog 中，凡是以 ` 开头的关键字都是预处理指令。</p>
+<p>就像 C 语言里的：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">ifdef</span></span></span><br></pre></td></tr></table></figure>
+
+<h2 id="define-是干什么的？"><a href="#define-是干什么的？" class="headerlink" title="`define 是干什么的？"></a>`define 是干什么的？</h2><figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="meta">`<span class="keyword">define</span> COUNTER_WIDTH 25</span></span><br></pre></td></tr></table></figure>
+
+<p>作用：</p>
+<blockquote>
+<p>在编译之前，把代码里出现的 &#96;COUNTER_WIDTH 全部替换成 25。</p>
+</blockquote>
+<p>这是纯文本替换，不是变量、不是参数、不是寄存器。</p>
+<h3 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h3><figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="keyword">reg</span> [`COUNTER_WIDTH-<span class="number">1</span>:<span class="number">0</span>] cnt;</span><br></pre></td></tr></table></figure>
+
+<p>编译前等价于：</p>
+<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="keyword">reg</span> [<span class="number">24</span>:<span class="number">0</span>] cnt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="和-parameter-的重要区别"><a href="#和-parameter-的重要区别" class="headerlink" title="和 parameter 的重要区别"></a>和 parameter 的重要区别</h2><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>`define</th>
+<th>parameter</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>作用阶段</td>
+<td>编译前文本替换</td>
+<td>综合&#x2F;实例化阶段</td>
+</tr>
+<tr>
+<td>是否有作用域</td>
+<td>全局（容易冲突）</td>
+<td>模块作用域</td>
+</tr>
+<tr>
+<td>是否可被覆盖</td>
+<td>不可</td>
+<td>实例化可覆盖</td>
+</tr>
+<tr>
+<td>是否推荐工程使用</td>
+<td>少量用</td>
+<td>强烈推荐</td>
+</tr>
+</tbody></table>
+<p>不推荐：</p>
+<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="meta">`<span class="keyword">define</span> WIDTH 8</span></span><br></pre></td></tr></table></figure>
+
+<p>推荐：</p>
+<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="keyword">parameter</span> WIDTH = <span class="number">8</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="推荐使用的场景"><a href="#推荐使用的场景" class="headerlink" title="推荐使用的场景"></a>推荐使用的场景</h2><p>在某些场景推荐使用宏指令：</p>
+<p>定义编译开关</p>
+<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="meta">`<span class="keyword">define</span> SIMULATION</span></span><br><span class="line"></span><br><span class="line"><span class="meta">`<span class="keyword">ifdef</span> SIMULATION</span></span><br><span class="line">    <span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">        <span class="comment">// 仿真专用代码</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="meta">`<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+<p>定义全局常量（如总线宽度）</p>
+<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="meta">`<span class="keyword">define</span> DATA_WIDTH 16</span></span><br></pre></td></tr></table></figure>
+
+<p>条件编译（跨平台）</p>
+<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="meta">`<span class="keyword">ifdef</span> ALTERA</span></span><br><span class="line"><span class="meta">`<span class="keyword">elsif</span> XILINX</span></span><br><span class="line"><span class="meta">`<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+<p>最后总结：能用 <code>parameter</code> 的地方就不要用 <code>define</code>。</p>
+]]></content>
+      <categories>
+        <category>Verilog</category>
+      </categories>
+      <tags>
+        <tag>define</tag>
+        <tag>反引号语法</tag>
+        <tag>verilog预处理</tag>
+      </tags>
+  </entry>
 </search>
